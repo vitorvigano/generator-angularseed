@@ -22,15 +22,14 @@ AngularjsGenerator.prototype.askFor = function askFor() {
   // have Yeoman greet the user.
   console.log(this.yeoman);
 
-  var prompts = [{
-    type: 'confirm',
-    name: 'someOption',
-    message: 'Would you like to enable this option?',
-    default: true
+  var prompts = [{    
+    name: 'title',
+    message: 'What do you want to call your AngularJS project?'
   }];
 
   this.prompt(prompts, function (props) {
-    this.someOption = props.someOption;
+      //title
+    this.title = props.title;
 
     cb();
   }.bind(this));
@@ -51,7 +50,7 @@ AngularjsGenerator.prototype.app = function app() {
     // bower
   this.template('_bower.json', 'bower.json');
     // index.html
-  this.template('index.html', 'app/index.html');
+  this.template('_index.html', 'app/index.html');
     // css files
   this.template('app.css', 'app/css/app.css');
     // js files
