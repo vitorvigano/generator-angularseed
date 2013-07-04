@@ -24,12 +24,19 @@ AngularjsGenerator.prototype.askFor = function askFor() {
 
   var prompts = [{    
     name: 'title',
-    message: 'What do you want to call your AngularJS project?'
+    message: 'What do you want to call your AngularJS project?',
+      default: 'Awesome Title'
+  }, {
+    name: 'moduleName',
+    message: 'What do you want to call your AngularJS main module?',
+    default: 'myApp'
   }];
 
   this.prompt(prompts, function (props) {
-      //title
+      // title
     this.title = props.title;
+      // module name
+      this.moduleName = props.moduleName;
 
     cb();
   }.bind(this));
@@ -49,16 +56,17 @@ AngularjsGenerator.prototype.app = function app() {
   this.template('_package.json', 'package.json');
     // bower
   this.template('_bower.json', 'bower.json');
-    // index.html
+    // html files
   this.template('_index.html', 'app/index.html');
+  this.template('_view1.html', 'app/views/view1.html');
     // css files
   this.template('app.css', 'app/css/app.css');
     // js files
-  this.template('app.js', 'app/js/app.js');  
-  this.template('services.js', 'app/js/services.js');
-  this.template('controllers.js', 'app/js/controllers.js');
-  this.template('filters.js', 'app/js/filters.js');
-  this.template('directives.js', 'app/js/directives.js');
+  this.template('_app.js', 'app/js/app.js');  
+  this.template('_services.js', 'app/js/services.js');
+  this.template('_controllers.js', 'app/js/controllers.js');
+  this.template('_filters.js', 'app/js/filters.js');
+  this.template('_directives.js', 'app/js/directives.js');
 };
 
 AngularjsGenerator.prototype.projectfiles = function projectfiles() {
