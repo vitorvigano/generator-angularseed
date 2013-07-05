@@ -2,4 +2,4 @@
 
 /* services */
 
-var services = angular.module('<%= moduleName %>.services', []);
+var services = angular.module('<%= projectName %>.services', []);

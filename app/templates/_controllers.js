@@ -2,4 +2,4 @@
 
 /* controllers */
 
-var controllers = angular.module('<%= moduleName %>.controllers', []);
+var controllers = angular.module('<%= projectName %>.controllers', []);

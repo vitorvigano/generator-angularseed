@@ -2,10 +2,10 @@
 
 /* configurations */
 
-var app = angular.module('<%= moduleName %>', ['<%= moduleName %>.controllers',
-                                     '<%= moduleName %>.services',
-                                     '<%= moduleName %>.directives',
-                                     '<%= moduleName %>.filters']);
+var app = angular.module('<%= projectName %>', ['<%= projectName %>.controllers',
+                                     '<%= projectName %>.services',
+                                     '<%= projectName %>.directives',
+                                     '<%= projectName %>.filters']);
 
 // route configurations
 app.config(['$routeProvider', function ($routeProvider) {

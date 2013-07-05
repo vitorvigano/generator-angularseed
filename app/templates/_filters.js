@@ -2,4 +2,4 @@
 
 /* filters */
 
-var filters = angular.module('<%= moduleName %>.filters', []);
+var filters = angular.module('<%= projectName %>.filters', []);
