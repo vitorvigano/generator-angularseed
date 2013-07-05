@@ -23,10 +23,6 @@ AngularjsGenerator.prototype.askFor = function askFor() {
     console.log(this.yeoman);
 
     var prompts = [{
-        name: 'projectName',
-        message: 'What do you want to call your AngularJS project?',
-        default: 'My Angular Project'
-    }, {
         name: 'includeAngularCookies',
         message: 'Do you want to include angular-cookies.js? (y/n)',
         default: false
@@ -38,7 +34,7 @@ AngularjsGenerator.prototype.askFor = function askFor() {
 
     this.prompt(prompts, function (props) {
         // project name
-        this.projectName = props.projectName;
+        this.projectName = 'myApp';
         // include angular cookies
         this.includeAngularCookies = props.includeAngularCookies;
         // include twitter bootstrap

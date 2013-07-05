@@ -8,18 +8,20 @@
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><%= _.capitalize(projectName) %></title>
-        <!-- style -->
-        <link rel="stylesheet" href="css/app.css"/>
+        <!-- build:css dist/css/app.css -->
+        <link rel="stylesheet" href="css/app.css">
+        <!-- endbuild -->
     </head>
     <body>
         <!-- wrapper -->
         <div ng-view></div>
-        <!-- AngularJS -->
+        <!-- build:js dist/js/app.js -->
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
         <script src="js/app.js"></script>
         <script src="js/services.js"></script>
         <script src="js/controllers.js"></script>
         <script src="js/filters.js"></script>
         <script src="js/directives.js"></script>
+        <!-- endbuild -->        
     </body>
 </html>
