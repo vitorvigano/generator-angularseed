@@ -1,3 +1,3 @@
 'use strict';
 
-var directives = angular.module('<%= projectName %>.directives', []);
+var directives = angular.module('<%= moduleName %>.directives', []);

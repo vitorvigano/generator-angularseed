@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 
-<html ng-app="<%= projectName %>">
+<html ng-app="<%= moduleName %>">
     <head>  
         <!-- meta content -->
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><%= _.capitalize(projectName) %></title>
-        <!-- build:css dist/css/app.css -->
+        <title>My Awesome Title</title>
+        <!-- build:css ../build/css/app.min.css -->
         <link rel="stylesheet" href="css/app.css">
         <!-- endbuild -->
     </head>
     <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a                        href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
         <!-- wrapper -->
-        <div ng-view></div>
-        <!-- build:js dist/js/app.js -->
+        <div ng-view></div>        
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+        <!-- build:js ../build/js/app.min.js -->
         <script src="js/app.js"></script>
         <script src="js/services.js"></script>
         <script src="js/controllers.js"></script>

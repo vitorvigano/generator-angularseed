@@ -1,42 +1,41 @@
 module.exports = function (grunt) {
     
-    // Project configuration.
+    // Project configuration
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        clean: {
-            dist: ['dist']
-        },
+        
+        /* clean directories */
+        clean: ['build'],
+        
+        /* prepare for minification */
         useminPrepare: {
             html: 'app/index.html',
-            css: 'app/css/app.css'
+            options: {
+                dest: 'build'
+            }
         },
+        
+        
         copy: {
             dist: {
                 files: [{
                     expand: true,
                     dot: true,
                     cwd: 'app',
-                    dest: 'dist',
-                    src: [
-                        '*.{ico,png,txt}',
-                        '.htaccess',
-                        'bower_components/**/*',
-                        'img/{,*/}*.{gif,webp,svg,jpg,png}',
-                        'styles/fonts/*',
-                        'lib/{,*/}*.*'
-                    ]
+                    dest: 'build',
+                    src: ['*']
                 }]
             }
         },
-        uglify: {
-            dist: {
-                src: 'app/js/*.js',
-                dest: 'dist/app.min.js',
-                options: {
-                    preserveComments: false
-                }
-            }
+        
+        
+        uglify: {            
+            options: {
+                preserveComments: false
+            }           
         },
+        
+        
         rev: {
             dist: {
                 options: {
@@ -52,12 +51,13 @@ module.exports = function (grunt) {
                     ]
                 }
             }
-        },
+        },        
+        
         usemin: {
-            html: ['dist/{,*/}*.html'],
-            css: ['dist/css/{,*/}*.css'],
+            html: ['build/index.html'],
+            css: ['build/css/app.css'],
             options: {
-                dirs: ['dist']
+                dirs: ['build']
             }
         }
     });
@@ -69,19 +69,20 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-rev');
 
     grunt.registerTask('build', [
-        'clean:dist',
+        'clean',
         'useminPrepare',
-        'copy:dist',
+        //'copy:dist',
         //'concurrent:dist',
         //'concat',
-        //'copy',
+        'copy',
         //'cdnify',
         //'ngmin',
         //'cssmin',
-        'uglify:dist',
-        'rev:dist',
+        //'uglify'
+       // 'rev:dist',
         'usemin'
     ]);
 
     grunt.registerTask('default', ['build']);
+    grunt.registerTask('deploy', ['build']);    
 };
