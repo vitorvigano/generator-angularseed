@@ -15,7 +15,7 @@ module.exports = function (grunt) {
             }
         },
         
-        
+        /* put files not handled in other tasks here */
         copy: {
             dist: {
                 files: [{
@@ -23,16 +23,15 @@ module.exports = function (grunt) {
                     dot: true,
                     cwd: 'app',
                     dest: 'build',
-                    src: ['*']
+                    src: ['*.{ico,png,txt}','.htaccess']
                 }]
             }
         },
         
-        
-        uglify: {            
+        uglify: {
             options: {
                 preserveComments: false
-            }           
+            }
         },
         
         
@@ -51,7 +50,7 @@ module.exports = function (grunt) {
                     ]
                 }
             }
-        },        
+        },
         
         usemin: {
             html: ['build/index.html'],
@@ -59,30 +58,66 @@ module.exports = function (grunt) {
             options: {
                 dirs: ['build']
             }
+        },
+        
+        htmlmin: {
+            dist: {
+                options: {
+                  /*removeCommentsFromCDATA: true,
+                  // https://github.com/yeoman/grunt-usemin/issues/44
+                  //collapseWhitespace: true,
+                  collapseBooleanAttributes: true,
+                  removeAttributeQuotes: true,
+                  removeRedundantAttributes: true,
+                  useShortDoctype: true,
+                  removeEmptyAttributes: true,
+                  removeOptionalTags: true*/
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'app',
+                    src: ['*.html', 'partials/*.html'],
+                    dest: 'build'
+                }]
+            }
+        },
+        imagemin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'app/img',
+                    src: '{,*/}*.{png,jpg,jpeg}',
+                    dest: 'build/img'
+                }]
+            }
         }
     });
     
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-usemin');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-rev');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
 
     grunt.registerTask('build', [
         'clean',
         'useminPrepare',
-        //'copy:dist',
-        //'concurrent:dist',
-        //'concat',
+        'htmlmin',
+        'imagemin',
+        'concat',
         'copy',
         //'cdnify',
         //'ngmin',
-        //'cssmin',
-        //'uglify'
+        'cssmin',
+        'uglify',
        // 'rev:dist',
         'usemin'
     ]);
 
     grunt.registerTask('default', ['build']);
-    grunt.registerTask('deploy', ['build']);    
+    grunt.registerTask('deploy', ['build']);
 };
