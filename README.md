@@ -1,7 +1,7 @@
 # Generator-angularseed
 [![Build Status](https://secure.travis-ci.org/vitorvigano/generator-angularseed.png?branch=master)](https://travis-ci.org/vitorvigano/generator-angularseed)
 
-A generator for yo based on Angular seed.
+A generator for yo based on Angular Seed.
 
 Maintainer: [Vitor Viganó](https://github.com/vitorvigano)
 
