@@ -2,7 +2,8 @@
     "name": "angularseed",
     "version": "0.0.1",
     "devDependencies": {      
-        "grunt": "~0.4.1", 
+        "grunt": "~0.4.1",
+        "karma": "~0.8.6",
         "grunt-contrib-clean": "~0.4.1",
         "grunt-usemin": "~0.1.12",
         "grunt-contrib-htmlmin": "~0.1.3",
