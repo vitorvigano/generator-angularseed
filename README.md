@@ -1,4 +1,4 @@
-# Generator-angularjs
+# Generator-angularseed
 [![Build Status](https://secure.travis-ci.org/vitorvigano/generator-angularseed.png?branch=master)](https://travis-ci.org/vitorvigano/generator-angularseed)
 
 A generator for yo based on Angular seed.
