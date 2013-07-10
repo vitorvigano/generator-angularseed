@@ -31,6 +31,8 @@ Este gerador foi construído com base no [Angular seed](https://github.com/angul
 
 Irá rodar os testes utilizando o [Karma](http://karma-runner.github.io/).
 
+O Karma necessita que o navegador seja configurado no PATH do ambiente. [Browser configuration](http://karma-runner.github.io/0.8/config/browsers.html)
+
 ### grunt build
 
 `grunt build`
