@@ -1,20 +1,44 @@
-<<<<<<< HEAD
 # Generator-angularjs
-[![Build Status](https://secure.travis-ci.org/vitorvigano/generator-angularjs.png?branch=master)](https://travis-ci.org/vitorvigano/generator-angularjs)
+[![Build Status](https://secure.travis-ci.org/vitorvigano/generator-angularseed.png?branch=master)](https://travis-ci.org/vitorvigano/generator-angularseed)
 
-A generator for Yeoman.
+A generator for yo based on Angular seed.
+
+Maintainer: [Vitor Viganó](https://github.com/vitorvigano)
 
 ## Getting started
-- Make sure you have [yo](https://github.com/yeoman/yo) installed:
-    `npm install -g yo`
-- Install the generator: `npm install -g generator-angularjs`
-- Run: `yo angularjs`
+
+- Make sure you have [yo](https://github.com/yeoman/yo) installed: `npm install -g yo`
+
+- Install the generator: `npm install -g generator-angularseed`
+
+- Make a new directory, and `cd` into it:
+
+- Run yo: `yo angularseed`
 
 ## License
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
-=======
-generator-angularjs
-===================
 
-My custom yo generator for angular apps.
->>>>>>> f573d75f71254a00cbce4922541ec81d63f4aa1d
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)
+
+##generator-angularseed
+
+Este gerador foi construído com base no [Angular seed](https://github.com/angular/angular-seed) com o objetivo de automatizar o build do projeto.
+
+## Tasks disponíveis
+
+### grunt test
+
+`grunt test`
+
+Irá rodar os testes utilizando o [Karma](http://karma-runner.github.io/).
+
+### grunt build
+
+`grunt build`
+
+Irá gerar uma versão pronta para deploy `/build`.
+
+### grunt (default)
+
+`grunt`
+
+Irá rodar todas as tasks acima.
