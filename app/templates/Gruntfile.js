@@ -57,7 +57,7 @@ module.exports = function (grunt) {
                     dot: true,
                     cwd: 'app',
                     dest: 'build',
-                    src: ['*.{ico,png,txt}', '.htaccess']
+                    src: ['*.{ico,png,txt}', '.htaccess', 'lib/{,*/}*.js']
                 }]
             }
         },
@@ -79,6 +79,7 @@ module.exports = function (grunt) {
             files: {
                 src: [
                     'build/js/{,*/}*.js',
+                    'build/lib/{,*/}*.js',
                     'build/css/{,*/}*.css',
                     'build/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
