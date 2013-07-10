@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function (grunt) {
     
     // Project configuration
@@ -7,11 +9,43 @@ module.exports = function (grunt) {
         /* clean directories */
         clean: ['build'],
         
-        /* prepare for minification */
+        /* 
+            prepare for minification 
+            este comando configura as tasks cssmin e uglify
+        */
         useminPrepare: {
             html: 'app/index.html',
             options: {
                 dest: 'build'
+            }
+        },
+        
+        /* html minification */
+        htmlmin: {
+            dist: {
+                options: {
+                    //deixar essa opcao desabilitada
+                    //causa conflito com o ngmin
+                    //removeComments: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'app',
+                    src: ['*.html', 'partials/*.html'],
+                    dest: 'build'
+                }]
+            }
+        },
+        
+        /* image minification */
+        imagemin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'app/img',
+                    src: '{,*/}*.{png,jpg,jpeg}',
+                    dest: 'build/img'
+                }]
             }
         },
         
@@ -23,35 +57,35 @@ module.exports = function (grunt) {
                     dot: true,
                     cwd: 'app',
                     dest: 'build',
-                    src: ['*.{ico,png,txt}','.htaccess']
+                    src: ['*.{ico,png,txt}', '.htaccess']
                 }]
             }
         },
         
+        /* js file minification */
         uglify: {
             options: {
                 preserveComments: false
             }
         },
         
-        
+        /* cache busting */
         rev: {
-            dist: {
-                options: {
-                    encoding: 'utf8',
-                    algorithm: 'md5',
-                    length: 8
-                },
-                files: {
-                    src: [
-                        'dist/js/{,*/}*.js',
-                        'dist/css/{,*/}*.css',
-                        'dist/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-                    ]
-                }
+            options: {
+                encoding: 'utf8',
+                algorithm: 'md5',
+                length: 8
+            },
+            files: {
+                src: [
+                    'build/js/{,*/}*.js',
+                    'build/css/{,*/}*.css',
+                    'build/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+                ]
             }
         },
         
+        /* replace links to minificated files */
         usemin: {
             html: ['build/index.html'],
             css: ['build/css/app.css'],
@@ -60,48 +94,34 @@ module.exports = function (grunt) {
             }
         },
         
-        htmlmin: {
-            dist: {
-                options: {
-                  /*removeCommentsFromCDATA: true,
-                  // https://github.com/yeoman/grunt-usemin/issues/44
-                  //collapseWhitespace: true,
-                  collapseBooleanAttributes: true,
-                  removeAttributeQuotes: true,
-                  removeRedundantAttributes: true,
-                  useShortDoctype: true,
-                  removeEmptyAttributes: true,
-                  removeOptionalTags: true*/
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'app',
-                    src: ['*.html', 'partials/*.html'],
-                    dest: 'build'
-                }]
-            }
-        },
-        imagemin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: 'app/img',
-                    src: '{,*/}*.{png,jpg,jpeg}',
-                    dest: 'build/img'
-                }]
+        /* karma test runner */
+        karma: {
+            unit: {
+                configFile: 'config/karma.conf.js',
+                singleRun: true
             }
         }
     });
     
+    //load dependencies
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-usemin');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-rev');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-rev');
+    grunt.loadNpmTasks('grunt-karma');
+    
+    /*
+        tasks
+    */
+    
+    grunt.registerTask('test', [
+        'karma'
+    ]);
 
     grunt.registerTask('build', [
         'clean',
@@ -110,14 +130,14 @@ module.exports = function (grunt) {
         'imagemin',
         'concat',
         'copy',
-        //'cdnify',
-        //'ngmin',
         'cssmin',
         'uglify',
-       // 'rev:dist',
+        'rev',
         'usemin'
     ]);
 
-    grunt.registerTask('default', ['build']);
-    grunt.registerTask('deploy', ['build']);
+    grunt.registerTask('default', [
+        'test',
+        'build'
+    ]);
 };

@@ -44,19 +44,31 @@ AngularjsGenerator.prototype.askFor = function askFor() {
 
 AngularjsGenerator.prototype.createDirectories = function createDirectories() {
     
+    //app
     this.mkdir('app');   
     this.mkdir('app/img');
     this.mkdir('app/css');
     this.mkdir('app/js');
     this.mkdir('app/lib');
-    this.mkdir('app/partials');   
+    this.mkdir('app/partials');
+    
+    //test
+    this.mkdir('test');
+    this.mkdir('test/e2e');
+    this.mkdir('test/unit');
+    
+    //config
+    this.mkdir('config')
 };
 
 AngularjsGenerator.prototype.addFiles = function addFiles() {
     
+    //root
     this.template('Gruntfile.js', 'Gruntfile.js');
     this.template('_package.json', 'package.json');
-    this.template('_bower.json', 'bower.json');
+    this.copy('gitignore', '.gitignore');
+    
+    //app
     this.template('_index.html', 'app/index.html');    
     this.template('_app.js', 'app/js/app.js');
     this.template('_services.js', 'app/js/services.js');
@@ -65,8 +77,15 @@ AngularjsGenerator.prototype.addFiles = function addFiles() {
     this.template('_directives.js', 'app/js/directives.js');
     this.copy('view1.html', 'app/partials/view1.html');
     this.copy('app.css', 'app/css/app.css');
-    this.copy('robots.txt', 'app/robots.txt');
-    this.copy('gitignore', '.gitignore');
+    this.copy('robots.txt', 'app/robots.txt');    
     this.copy('gitkeep', 'app/img/.gitkeep');
     this.copy('gitkeep', 'app/lib/.gitkeep');
+    
+    //test
+    this.copy('gitkeep', 'test/unit/.gitkeep');
+    this.copy('gitkeep', 'test/e2e/.gitkeep');
+    
+    //config
+    this.copy('karma.conf.js', 'config/karma.conf.js');
+    this.copy('karma-e2e.conf.js', 'config/karma-e2e.conf.js');
 };

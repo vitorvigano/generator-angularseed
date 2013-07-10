@@ -1,12 +1,14 @@
 {
-  "name": "generator-angularjs",
-  "version": "0.0.0",
-  "description": "A generator for Yeoman",
+  "name": "generator-angularseed",
+  "version": "0.0.1",
+  "description": "A generator for Angular seed",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "angular",
+    "seed"
   ],
-  "homepage": "https://github.com/vitorvigano/generator-angularjs",
-  "bugs": "https://github.com/vitorvigano/generator-angularjs/issues",
+  "homepage": "https://github.com/vitorvigano/generator-angularseed",
+  "bugs": "https://github.com/vitorvigano/generator-angularseed/issues",
   "author": {
     "name": "Vitor Viganó",
     "email": "vitorvigano@gmail.com",
@@ -15,7 +17,7 @@
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/vitorvigano/generator-angularjs.git"
+    "url": "git://github.com/vitorvigano/generator-angularseed.git"
   },
   "scripts": {
     "test": "mocha"
@@ -26,11 +28,7 @@
   "devDependencies": {
     "mocha": "~1.10.0",
     "grunt": "~0.4.1",
-    "grunt-usemin": "~0.1.12",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-rev": "~0.1.0",
-    "grunt-contrib-cssmin": "~0.6.1"
+    "karma": "~0.8.6"
   },
   "engines": {
     "node": ">=0.8.0"
