@@ -33,7 +33,7 @@ Irá rodar os testes utilizando o [Karma](http://karma-runner.github.io/).
 
 O Karma necessita que o navegador seja configurado no PATH do ambiente. Ou se preferir, use o PhantomJS.
 
-Maiores informações em [Browser configuration](http://karma-runner.github.io/0.8/config/browsers.html)
+Maiores informações em: [Browser configuration](http://karma-runner.github.io/0.8/config/browsers.html).
 
 ### grunt build
 
