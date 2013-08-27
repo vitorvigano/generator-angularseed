@@ -22,12 +22,12 @@ describe('angularseed generator', function () {
   it('creates expected files', function (done) {
     var expected = [
       // add files you expect to exist here.
-      'package.json',
-      'Gruntfile.js'
+      '.jshintrc',
+      '.editorconfig'
     ];
 
     helpers.mockPrompt(this.app, {
-      'someOption': 'Y'
+      'someOption': true
     });
     this.app.options['skip-install'] = true;
     this.app.run({}, function () {

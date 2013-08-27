@@ -1,40 +1,44 @@
 {
-  "name": "generator-angularseed",
-  "version": "0.1.2",
-  "description": "A generator for Angular seed",
-  "keywords": [
-    "yeoman-generator",
-    "angular",
-    "seed"
-  ],
-  "homepage": "https://github.com/vitorvigano/generator-angularseed",
-  "bugs": "https://github.com/vitorvigano/generator-angularseed/issues",
-  "author": {
-    "name": "Vitor Viganó",
-    "email": "vitorvigano@gmail.com",
-    "url": "https://github.com/vitorvigano"
-  },
-  "main": "app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/vitorvigano/generator-angularseed.git"
-  },
-  "scripts": {
-    "test": "mocha"
-  },
-  "dependencies": {
-    "yeoman-generator": "~0.12.0"
-  },
-  "devDependencies": {
-    "mocha": "~1.10.0",
-    "grunt": "~0.4.1"    
-  },
-  "engines": {
-    "node": ">=0.8.0"
-  },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ]
+    "name": "generator-angularseed",
+    "version": "0.1.4",
+    "description": "A generator for Angular Seed",
+    "keywords": [
+        "yeoman-generator",
+        "yo",
+        "angular",
+        "seed"
+    ],
+        "homepage": "https://github.com/vitorvigano/generator-angularseed",
+        "bugs": "https://github.com/vitorvigano/generator-angularseed/issues",
+        "author": {
+        "name": "Vitor Viganó",
+        "email": "vitorvigano@gmail.com",
+        "url": "https://github.com/vitorvigano"
+        },
+        "main": "app/index.js",
+        "repository": {
+        "type": "git",
+        "url": "git://github.com/vitorvigano/generator-angularseed.git"
+        },
+        "scripts": {
+        "test": "mocha"
+        },
+        "dependencies": {
+        "yeoman-generator": "~0.13.0"
+        },
+        "devDependencies": {
+        "mocha": "~1.12.0"
+        },
+        "peerDependencies": {
+        "yo": ">=1.0.0-rc.1"
+        },
+        "engines": {
+        "node": ">=0.8.0",
+        "npm": ">=1.2.10"
+        },
+        "licenses": [
+        {
+        "type": "MIT"
+        }
+    ]
 }
