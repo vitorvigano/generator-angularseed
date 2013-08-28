@@ -65,6 +65,8 @@ Finally, if you want all the tasks as described above plus deploy automatically 
 $ grunt-deploy
 ```
 
+Note: AWS configurations should be set in the aws-config.json. If you want more informations about the config file, please visit [here](https://github.com/jpillora/grunt-aws) or contact me. I'll be happy to help you. :)
+
 ### Getting To Know Yeoman
 
 Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
