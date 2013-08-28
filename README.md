@@ -62,7 +62,7 @@ $ grunt
 Finally, if you want all the tasks as described above plus deploy automatically to [AWS S3](http://aws.amazon.com/en/s3/)
 
 ```
-$ grunt-deploy
+$ grunt deploy
 ```
 
 Note: AWS configurations should be set in the aws-config.json. If you want more informations about the config file, please visit [here](https://github.com/jpillora/grunt-aws) or contact me. I'll be happy to help you. :)
