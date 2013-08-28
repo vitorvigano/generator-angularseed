@@ -22,8 +22,8 @@ describe('angularseed generator', function () {
   it('creates expected files', function (done) {
     var expected = [
       // add files you expect to exist here.
-      '.aws-config.json',
-      '.gitignore'
+      //'.aws-config.json',
+      //'.gitignore'
     ];
 
     helpers.mockPrompt(this.app, {
