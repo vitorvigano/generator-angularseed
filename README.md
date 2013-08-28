@@ -35,12 +35,41 @@ Finally, initiate the generator:
 $ yo angularseed
 ```
 
+### How This Generator Works
+
+This generator can make a couple of things. Here we go:
+
+To just build your app, run:
+
+```
+$ grunt build
+```
+A ready-to-deploy version will be created in build folder.
+
+
+To run your tests using [Karma](http://karma-runner.github.io/0.10/index.html):
+
+```
+$ grunt test
+```
+
+To run the two tasks as described above, you can use:
+
+```
+$ grunt 
+```
+
+Finally, if you want all the tasks as described above plus deploy automatically to [AWS S3](http://aws.amazon.com/en/s3/)
+
+```
+$ grunt-deploy
+```
+
 ### Getting To Know Yeoman
 
 Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
 
 If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
-
 
 ## License
 

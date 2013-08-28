@@ -64,8 +64,9 @@ AngularjsGenerator.prototype.createDirectories = function createDirectories() {
 AngularjsGenerator.prototype.addFiles = function addFiles() {
     
     //root
-    this.template('Gruntfile.js', 'Gruntfile.js');
+    this.copy('Gruntfile.js', 'Gruntfile.js');
     this.template('_package.json', 'package.json');
+    this.copy('aws-config.json', 'aws-config.json');
     this.copy('gitignore', '.gitignore');
     
     //app

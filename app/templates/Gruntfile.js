@@ -1,10 +1,24 @@
-'use strict';
-
 module.exports = function (grunt) {
+    
+    'use strict';
+    
+    // load dependencies
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-rev');
+    grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-aws');
     
     // Project configuration
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        aws: grunt.file.readJSON('aws-config.json'),
         
         /* clean directories */
         clean: ['build'],
@@ -31,7 +45,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'app',
-                    src: ['*.html', 'partials/*.html'],
+                    src: ['*.html', 'partials/{,*/}*.html'],
                     dest: 'build'
                 }]
             }
@@ -43,7 +57,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'app/img',
-                    src: '{,*/}*.{png,jpg,jpeg}',
+                    src: '{,*/}*.{ico,png,jpg,jpeg,gif,webp,svg}',
                     dest: 'build/img'
                 }]
             }
@@ -57,7 +71,7 @@ module.exports = function (grunt) {
                     dot: true,
                     cwd: 'app',
                     dest: 'build',
-                    src: ['*.{ico,png,txt}', '.htaccess', 'lib/{,*/}*.js']
+                    src: ['*.txt', '.htaccess', 'lib/{,*/}*.js']
                 }]
             }
         },
@@ -81,7 +95,7 @@ module.exports = function (grunt) {
                     'build/js/{,*/}*.js',
                     'build/lib/{,*/}*.js',
                     'build/css/{,*/}*.css',
-                    'build/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+                    'build/img/{,*/}*.{ico,png,jpg,jpeg,gif,webp,svg}'
                 ]
             }
         },
@@ -89,7 +103,6 @@ module.exports = function (grunt) {
         /* replace links to minificated files */
         usemin: {
             html: ['build/index.html'],
-            css: ['build/css/app.css'],
             options: {
                 dirs: ['build']
             }
@@ -101,29 +114,28 @@ module.exports = function (grunt) {
                 configFile: 'config/karma.conf.js',
                 singleRun: true
             }
+        },
+        
+        // aws
+        s3: {
+            options: {
+                accessKeyId: '<%= aws.accessKeyId %>',
+                secretAccessKey: '<%= aws.secretAccessKey %>',
+                bucket: '<%= aws.bucket %>',
+                region: '<%= aws.region %>'
+            },
+            build: {
+                cwd: "build/",
+                src: "**"
+            }
         }
     });
     
-    //load dependencies
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-usemin');
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-rev');
-    grunt.loadNpmTasks('grunt-karma');
-    
-    /*
-        tasks
-    */
-    
+    // tasks
     grunt.registerTask('test', [
         'karma'
     ]);
-
+    
     grunt.registerTask('build', [
         'clean',
         'useminPrepare',
@@ -136,7 +148,13 @@ module.exports = function (grunt) {
         'rev',
         'usemin'
     ]);
-
+    
+    grunt.registerTask('deploy', [
+        'test',
+        'build',
+        's3'
+    ]);
+    
     grunt.registerTask('default', [
         'test',
         'build'
