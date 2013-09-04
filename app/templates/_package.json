@@ -2,10 +2,15 @@
     "name": "angularseed",
     "version": "0.0.1",
     "devDependencies": {
-        "grunt": "~0.4.1",
-        "grunt-karma": "~0.6.2",
-        "karma-jasmine": "~0.1.3",
-        "karma-ng-scenario": "~0.1.0",
+        "grunt": "latest",
+        "grunt-karma": "latest",
+        "karma-jasmine": "latest",
+        "karma-chrome-launcher": "latest",
+        "karma-safari-launcher": "latest",
+        "karma-firefox-launcher": "latest",
+        "karma-ie-launcher": "latest",
+        "karma-phantomjs-launcher": "latest",
+        "karma-ng-scenario": "latest",
         "grunt-contrib-clean": "~0.4.1",
         "grunt-usemin": "~0.1.12",
         "grunt-contrib-htmlmin": "~0.1.3",
@@ -15,6 +20,6 @@
         "grunt-contrib-cssmin": "~0.6.1",
         "grunt-contrib-uglify": "~0.2.2",
         "grunt-rev": "~0.1.0",
-        "grunt-aws": "~0.2.1"        
+        "grunt-aws": "~0.2.1"
     }
 }
