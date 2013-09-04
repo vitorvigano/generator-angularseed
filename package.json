@@ -1,6 +1,6 @@
 {
     "name": "generator-angularseed",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "A generator for Angular Seed",
     "keywords": [
         "yeoman-generator",
